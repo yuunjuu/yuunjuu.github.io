@@ -87,14 +87,14 @@ JSP 액션 태그는 클라이언트 혹은 서버에게 어떠한 작동을 하
 
 ## `<jsp:useBean>`
 `<jsp:useBean>` 태그는 자바 객체를 생성하거나 기존에 만들어진 객체를 반환한다.
-```
+```html
 <jsp:useBean
     class="패키지명.클래스명"
     id="자바빈_이름"
     scope="page | request | session | application" />
 ```
 아래 자바 코드와 같은 역할을 한다고 볼 수 있다.
-```JAVA
+```java
 자바빈_클래스명 자바빈_이름 = new 자바빈_클래스명();
 ```
 
