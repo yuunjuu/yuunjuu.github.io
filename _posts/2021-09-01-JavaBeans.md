@@ -11,15 +11,18 @@ toc: true
 toc_sticky: true
 
 date: 2021-09-01
-last_modified_at: 2021-09-01
+last_modified_at: 2021-
 ---
 # 0. 자바 빈(Java Bean)
+---
 ```
-🚩 자바 빈(Java Bean)은 자바로 작성된 소프트웨어 컴포넌트이다.
+✔ 자바 빈(Java Bean)은 자바로 작성된 소프트웨어 컴포넌트이다.
 ```
 자바 빈은 JSP 페이지의 디자인 부분과 로직 부분을 분리하므로 복잡한 코드를 줄이고 코드를 재사용하여 프로그램의 효율을 높인다는 장점이 있다. 또한, 코드를 재사용하므로 코드 작성 시간은 단축되고, 이미 사용되던 코드이므로 안정성이 보장되며 유지보수가 쉽다.
 
+
 # 1. 자바 빈의 설계 규약
+---
 자바 빈을 작성하기 위해서는 설계 규약을 따라야 한다.
 
 **클래스**
@@ -27,7 +30,7 @@ last_modified_at: 2021-09-01
 
 **멤버 변수, 프로퍼티(property)**
 - 멤버 변수는 프로퍼티(property)라 부르며, 접근 지정자는 private으로 정의한다.
-  
+
 - 프로퍼티에 접근하기 위해서는 getter/setter 메소드를 이용한다.
 
 **생성자**
@@ -44,7 +47,7 @@ last_modified_at: 2021-09-01
 
 **자바 빈 형태**
 
-```JAVA
+```java
 package 패키지명;
 
 [import 패키지명;]
@@ -77,14 +80,18 @@ public class BeanClassName [implements java.io.Serializable] {
 }
 ```
 
-# 2. 자바 빈 관련 액션 태그
 
+# 2. 자바 빈 관련 액션 태그
+---
 JSP 액션 태그는 클라이언트 혹은 서버에게 어떠한 작동을 하도록 명령을 내리는 태그이다.
 
-### `<jsp:useBean>`
+## `<jsp:useBean>`
 `<jsp:useBean>` 태그는 자바 객체를 생성하거나 기존에 만들어진 객체를 반환한다.
-```JSP
-<jsp:useBean class="패키지명.클래스명" id="자바빈_이름" scope="page | request | session | application" />
+```
+<jsp:useBean
+    class="패키지명.클래스명"
+    id="자바빈_이름"
+    scope="page | request | session | application" />
 ```
 아래 자바 코드와 같은 역할을 한다고 볼 수 있다.
 ```JAVA
@@ -109,10 +116,10 @@ JSP 액션 태그는 클라이언트 혹은 서버에게 어떠한 작동을 하
   
 - application: 웹 사이트가 실행되는 동안 유효하다.
 
-### `<jsp:setProperty>`
+## `<jsp:setProperty>`
 
 `<jsp:setProperty>` 태그는 자바 빈에 속성 값을 할당한다.
-```JSP
+```
 <jsp:setProperty name="빈 이름" property="속성명" value="설정할 값" />
 <jsp:setProperty name="빈 이름" property="속성명" param="매개변수명" />
 ```
@@ -126,9 +133,9 @@ JSP 액션 태그는 클라이언트 혹은 서버에게 어떠한 작동을 하
 
 `param`: 클라이언트에서 전송된 파라미터 값, 즉 쿼리스트링에 작성된 값을 속성 값으로 할당
 
-### `<jsp:getProperty>`
+## `<jsp:getProperty>`
 `<jsp:setProperty>` 태그는 자바 빈의 속성 값을 가져온다.
-```JSP
+```
 <jsp:getProperty name="빈 이름" property="속성명" />
 ```
 `name`: 속성 값을 가져올 자바 빈 인스턴스의 이름
