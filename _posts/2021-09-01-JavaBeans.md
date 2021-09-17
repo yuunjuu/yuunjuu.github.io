@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2021-09-01
-last_modified_at: 2021-
+last_modified_at: 2021-09-17
 ---
 # 0. 자바 빈(Java Bean)
 ---
