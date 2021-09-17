@@ -1,5 +1,5 @@
 ---
-title: "자바 빈(Java Bean)"
+title: "[JSP] 자바 빈(Java Bean)"
 excerpt: "자바 빈에 대하여 알아본다."
 
 categories:
