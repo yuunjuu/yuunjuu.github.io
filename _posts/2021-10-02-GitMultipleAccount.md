@@ -14,9 +14,10 @@ date: 2021-10-02
 last_modified_at: 2021-10-02
 ---
 
-### 작업환경
+# 작업환경
 - Windows 10
 - Git bash
+
 
 # 1. 계정별 SSH KEY 생성
 ---
@@ -25,12 +26,14 @@ last_modified_at: 2021-10-02
 $ cd ~/.ssh
 ```
 **1) (생략 가능)기존의 id_rsa 파일 삭제**
+
 ~/.ssh 내부에 id_rsa 파일이 존재하는지 확인하고 있다면 해당 파일을 삭제한다. 만약 id_rsa 파일이 존재하지 않는다면 이 단계는 생략한다.
 ```
 $ ls -al
 $ rm ~/.ssh/id*
 ```
 **2) 계정별 SSH 키 생성**
+
 아래 명령어를 통해 계정별 SSH 키를 생성한다.
 ```
 $ ssh-keygen -t rsa -C "계정1 이메일" -f "id_rsa_계정1"
@@ -52,7 +55,8 @@ Enter passphrase(empty for no passphrase):
 - id_rsa_계정2
   
 - id_rsa_계정2.pub
-  
+
+
 # 2. SSH 키 복사
 ---
 public key를 복사한다.
@@ -66,6 +70,7 @@ $ cat ~/.ssh/id_rsa_계정1.pub
 2. 좌측 탭의 'SSH and GPG keys'로 이동
    
 3. 'SSH keys'의 'New SSH key' 클릭 > 복사한 SSH public key 붙여넣기
+
 
 # 3. SSH config 작성
 ---
@@ -88,6 +93,7 @@ Host github.com-계정2
         User git
         IdentityFile ~/.ssh/id_rsa_계정2
 ```
+
 
 # 4. 연결 테스트
 ---
