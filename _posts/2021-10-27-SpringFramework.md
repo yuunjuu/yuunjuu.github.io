@@ -26,7 +26,7 @@ last_modified_at: 2021-10-27
 
 1. 빠른 구현 시간
     
-    프레임워크는 아키텍처에 해당하는 골격 코드를 제공하므로 개발자는 비즈니스 로직만 구현하면 된다. 따라서 제한된 시간 안에 많은 기능을 구현할 수 있게 되는 것이다.
+    프레임워크는 아키텍처에 해당하는 골격 코드를 제공하므로 개발자는 비즈니스 로직만 구현하면 된다. 따라서 제한된 시간 안에 많은 기능을 구현할 수 있다.
     
 2. 쉬운 관리
     
@@ -35,6 +35,7 @@ last_modified_at: 2021-10-27
 3. 개발자들의 역량 획일화
    
 4. 검증된 아키텍처의 재사용과 일관성 유지
+
 
 
 # 2.  스프링 프레임워크란
@@ -256,3 +257,40 @@ public class User {
 }
 ```
 
+TV라는 인터페이스를 이용함으로써 TV를 좀 더 쉽게 결합할 수 있었다. 하지만 이 방법 역시, 클라이언트의 소스를 수정해야 한다. 좀 더 간편한 방식으로 TV를 교체할 수 있는 Factory 패턴을 살펴본다.
+
+## 디자인 패턴을 이용하여 결합도 낮추기
+
+```java
+public class BeanFactory {
+	public Object getBean(String beanName) {
+		if (beanName.equals("samsung") {
+			return new SamsungTV();
+		} else if (beanName.equals("lg")) {
+			return new LgTV();
+		}
+		return null;
+	}
+}
+```
+
+```java
+public class User {
+	public static void main(String[] args) {
+		BeanFactory factory = new BeanFactory();
+		TV tv = (TV)factory.getBean(args[0]);
+		tv.powerOn();
+		tv.volumeUp();
+		tv.volumeDown();
+		tv.powerOff();
+	}
+}
+```
+
+결국 클라이언트는 소스를 수정하지 않고도 실행되는 객체를 변경할 수 있게 된다. 이러한 결과는 BeanFactory에서 TV 객체를 생성하여 리턴하기 때문이다.  User 클래스에서는 객체를 직접 생성하지 않고 객체가 필요하다는 것을 BeanFactory에 요청하기만 하면 BeanFactory에서는 클라이언트가 사용할 TV 객체를 적절히 생성하여 넘겨주게 된다.
+
+
+
+# 참고
+---
+- 스프링 퀵 스타트
